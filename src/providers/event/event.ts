@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 
 /*
   Generated class for the EventProvider provider.
@@ -14,4 +16,13 @@ export class EventProvider {
     console.log('Hello EventProvider Provider');
   }
 
+  search(keywords: string[]): Observable<Object> {
+
+    let params = new HttpParams()
+      .append('order', '2')
+      .append('count', '100');
+    keywords.forEach(kwd => params = params.append('keyword', `${kwd}`));
+
+    return this.http.get("/connpass/api", { params: params });
+  }
 }
