@@ -14,6 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
+  keywords: string = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -22,4 +23,7 @@ export class SearchPage {
     console.log('ionViewDidLoad SearchPage');
   }
 
+  getEvents(ev) {
+    console.log(this.keywords);
+  }
 }
